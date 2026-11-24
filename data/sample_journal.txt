@@ -1,0 +1,285 @@
+========================================
+      ABYSSINIA GENERAL TRADING
+      Addis Ababa, Ethiopia
+      TIN: 0012345678
+      Tel: +251-11-123-4567
+========================================
+FISCAL RECEIPT
+RECEIPT #0001
+Date: 15/11/2026    Time: 09:15:23
+Terminal: POS-01
+Cashier: Almaz T.
+----------------------------------------
+ITEMS:
+Coca-Cola 330ml          2 x 25.00     50.00
+Mineral Water 1L         1 x 18.00     18.00
+Bread (Dabo)             3 x 12.50     37.50
+Sugar 1kg                1 x 85.00     85.00
+Cooking Oil 1L           1 x 145.00    145.00
+Teff Flour 1kg           2 x 95.00     190.00
+----------------------------------------
+SUBTOTAL:                              525.50
+VAT (15%):                              78.83
+DISCOUNT:                                0.00
+----------------------------------------
+TOTAL:                                 604.33
+PAYMENT: CASH
+CHANGE:                                 95.67
+========================================
+
+========================================
+      ABYSSINIA GENERAL TRADING
+      Addis Ababa, Ethiopia
+      TIN: 0012345678
+      Tel: +251-11-123-4567
+========================================
+FISCAL RECEIPT
+RECEIPT #0002
+Date: 15/11/2026    Time: 09:32:45
+Terminal: POS-01
+Cashier: Almaz T.
+----------------------------------------
+ITEMS:
+Pepsi 500ml              1 x 30.00     30.00
+Biscuit Pack             2 x 15.00     30.00
+Milk 1L                  1 x 48.00     48.00
+Eggs (6 pack)            2 x 42.00     84.00
+Injera (pack of 10)      1 x 60.00     60.00
+----------------------------------------
+SUBTOTAL:                              252.00
+VAT (15%):                              37.80
+DISCOUNT:                                0.00
+----------------------------------------
+TOTAL:                                 289.80
+PAYMENT: TELEBIRR
+REF: TLB-2026111509324
+========================================
+
+========================================
+      ABYSSINIA GENERAL TRADING
+      Addis Ababa, Ethiopia
+      TIN: 0012345678
+      Tel: +251-11-123-4567
+========================================
+FISCAL RECEIPT
+RECEIPT #0003
+Date: 15/11/2026    Time: 10:05:12
+Terminal: POS-02
+Cashier: Kebede M.
+----------------------------------------
+ITEMS:
+Tissue Paper             3 x 35.00     105.00
+Soap Bar                 2 x 22.00     44.00
+Shampoo 200ml            1 x 120.00    120.00
+Toothpaste               1 x 65.00     65.00
+Detergent 500g           1 x 78.00     78.00
+----------------------------------------
+SUBTOTAL:                              412.00
+VAT (15%):                              61.80
+DISCOUNT:                               20.00
+----------------------------------------
+TOTAL:                                 453.80
+PAYMENT: CBE BIRR
+REF: CBE-2026111510051
+========================================
+
+========================================
+      ABYSSINIA GENERAL TRADING
+      Addis Ababa, Ethiopia
+      TIN: 0012345678
+      Tel: +251-11-123-4567
+========================================
+FISCAL RECEIPT
+RECEIPT #0004
+Date: 15/11/2026    Time: 10:28:33
+Terminal: POS-01
+Cashier: Almaz T.
+----------------------------------------
+*** VOID ***
+ITEMS:
+Coca-Cola 330ml          1 x 25.00     25.00
+Chips Large              1 x 45.00     45.00
+----------------------------------------
+SUBTOTAL:                               70.00
+VAT (15%):                              10.50
+DISCOUNT:                                0.00
+----------------------------------------
+TOTAL:                                  80.50
+VOIDED - Cashier Error
+========================================
+
+========================================
+      ABYSSINIA GENERAL TRADING
+      Addis Ababa, Ethiopia
+      TIN: 0012345678
+      Tel: +251-11-123-4567
+========================================
+FISCAL RECEIPT
+RECEIPT #0005
+Date: 15/11/2026    Time: 10:45:19
+Terminal: POS-01
+Cashier: Almaz T.
+----------------------------------------
+ITEMS:
+Rice 5kg                 1 x 320.00    320.00
+Berbere 250g             2 x 55.00     110.00
+Mitmita 100g             1 x 40.00     40.00
+Shiro Powder 500g        1 x 75.00     75.00
+Onion 2kg                1 x 60.00     60.00
+Tomato 1kg               1 x 45.00     45.00
+Garlic 500g              1 x 70.00     70.00
+Green Pepper 500g        1 x 35.00     35.00
+----------------------------------------
+SUBTOTAL:                              755.00
+VAT (15%):                             113.25
+DISCOUNT:                               50.00
+----------------------------------------
+TOTAL:                                 818.25
+PAYMENT: CASH
+CHANGE:                                181.75
+========================================
+
+========================================
+      ABYSSINIA GENERAL TRADING
+      Addis Ababa, Ethiopia
+      TIN: 0012345678
+      Tel: +251-11-123-4567
+========================================
+FISCAL RECEIPT
+RECEIPT #0006
+Date: 15/11/2026    Time: 11:12:08
+Terminal: POS-02
+Cashier: Kebede M.
+----------------------------------------
+ITEMS:
+Notebook A4              5 x 28.00     140.00
+Pen (Blue)               10 x 8.00     80.00
+Pencil                   5 x 5.00      25.00
+Eraser                   3 x 10.00     30.00
+Ruler 30cm               2 x 15.00     30.00
+----------------------------------------
+SUBTOTAL:                              305.00
+VAT (15%):                              45.75
+DISCOUNT:                               15.00
+----------------------------------------
+TOTAL:                                 335.75
+PAYMENT: CASH
+CHANGE:                                164.25
+========================================
+
+========================================
+      ABYSSINIA GENERAL TRADING
+      Addis Ababa, Ethiopia
+      TIN: 0012345678
+      Tel: +251-11-123-4567
+========================================
+FISCAL RECEIPT
+RECEIPT #0007
+Date: 15/11/2026    Time: 11:38:52
+Terminal: POS-01
+Cashier: Almaz T.
+----------------------------------------
+ITEMS:
+Coffee (Buna) 500g       1 x 250.00    250.00
+Sugar 2kg                1 x 165.00    165.00
+Milk 500ml               2 x 28.00     56.00
+Tea Bags (25 pack)       1 x 45.00     45.00
+----------------------------------------
+SUBTOTAL:                              516.00
+VAT (15%):                              77.40
+DISCOUNT:                                0.00
+----------------------------------------
+TOTAL:                                 593.40
+PAYMENT: CARD
+REF: VISA-****1234
+========================================
+
+========================================
+      ABYSSINIA GENERAL TRADING
+      Addis Ababa, Ethiopia
+      TIN: 0012345678
+      Tel: +251-11-123-4567
+========================================
+FISCAL RECEIPT
+RECEIPT #0008
+Date: 15/11/2026    Time: 12:05:30
+Terminal: POS-02
+Cashier: Kebede M.
+----------------------------------------
+ITEMS:
+Banana (bunch)           2 x 20.00     40.00
+Orange 1kg               1 x 55.00     55.00
+Apple (each)             4 x 25.00     100.00
+Mango (each)             3 x 30.00     90.00
+Avocado (each)           2 x 35.00     70.00
+Lemon (each)             6 x 8.00      48.00
+----------------------------------------
+SUBTOTAL:                              403.00
+VAT (15%):                              60.45
+DISCOUNT:                                0.00
+----------------------------------------
+TOTAL:                                 463.45
+PAYMENT: CASH
+CHANGE:                                 36.55
+========================================
+
+========================================
+      ABYSSINIA GENERAL TRADING
+      Addis Ababa, Ethiopia
+      TIN: 0012345678
+      Tel: +251-11-123-4567
+========================================
+FISCAL RECEIPT
+RECEIPT #0009
+Date: 15/11/2026    Time: 12:30:15
+Terminal: POS-01
+Cashier: Almaz T.
+----------------------------------------
+ITEMS:
+Butter 500g              1 x 180.00    180.00
+Cheese 250g              1 x 145.00    145.00
+Yogurt 500ml             2 x 35.00     70.00
+Cream 250ml              1 x 85.00     85.00
+----------------------------------------
+SUBTOTAL:                              480.00
+VAT (15%):                              72.00
+DISCOUNT:                               25.00
+----------------------------------------
+TOTAL:                                 527.00
+PAYMENT: TELEBIRR
+REF: TLB-2026111512301
+========================================
+
+========================================
+      ABYSSINIA GENERAL TRADING
+      Addis Ababa, Ethiopia
+      TIN: 0012345678
+      Tel: +251-11-123-4567
+========================================
+FISCAL RECEIPT
+RECEIPT #0010
+Date: 15/11/2026    Time: 13:02:48
+Terminal: POS-02
+Cashier: Kebede M.
+----------------------------------------
+ITEMS:
+Chicken 1kg              1 x 280.00    280.00
+Beef 1kg                 1 x 450.00    450.00
+Lamb 500g                1 x 300.00    300.00
+Fish Fillet 500g         1 x 220.00    220.00
+----------------------------------------
+SUBTOTAL:                             1250.00
+VAT (15%):                             187.50
+DISCOUNT:                              100.00
+----------------------------------------
+TOTAL:                                1337.50
+PAYMENT: CASH
+CHANGE:                                162.50
+========================================
+
+========================================
+      END OF JOURNAL
+      Date: 15/11/2026
+      Total Receipts: 10
+      Terminal Report Generated
+========================================

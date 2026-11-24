@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.gitignore
+*.log
+data/uploads/*
+data/evidence/*
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+Dockerfile
+render.yaml

@@ -1,26 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ===== LIGHT THEME (default) ===== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #F8F9FA;
+  --surface: #FFFFFF;
+  --surface-lifted: #F3F4F6;
+  --ink: #111827;
+  --muted: #6B7280;
+  --panel: #1E2227;
+  --panel-muted: #B5AFA6;
+  --accent: #10B981;
+  --accent-hover: #059669;
+  --on-accent: #FFFFFF;
+  --line: #E5E7EB;
+  --warm-titanium: #B5AFA6;
+  --midnight-slate: #1E2227;
+  --success: #10B981;
+  --error: #EF4444;
+  --warning: #F59E0B;
+}
+
+/* ===== DARK THEME (Midnight Slate 60% #1E2227 + Warm Titanium #B5AFA6) ===== */
+html.dark,
+.dark,
+[data-theme="dark"] {
+  --bg: #1E2227 !important;           /* Midnight Slate 60% (CMYK 23,13,0,85 / RGB 30,34,39 / HEX #1E2227) */
+  --surface: #262B32 !important;      /* Lifted Slate Surface */
+  --surface-lifted: #2E343D !important;
+  --ink: #F5F5F3 !important;          /* Clean Bright Titanium White */
+  --muted: #B5AFA6 !important;        /* Warm Titanium (CMYK 0,3,8,29 / RGB 181,175,166 / HEX #B5AFA6) */
+  --panel: #16191D !important;        /* Deep Slate Panel */
+  --panel-muted: #B5AFA6 !important;  /* Warm Titanium Panel Text */
+  --accent: #10B981 !important;       /* Emerald Accent */
+  --accent-hover: #059669 !important;
+  --on-accent: #FFFFFF !important;
+  --line: #353B45 !important;         /* Dark Slate Line/Border */
+  --warm-titanium: #B5AFA6 !important;
+  --midnight-slate: #1E2227 !important;
+  --success: #10B981 !important;
+  --error: #F87171 !important;
+  --warning: #FBBF24 !important;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-lifted: var(--surface-lifted);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-panel: var(--panel);
+  --color-panel-muted: var(--panel-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  --color-line: var(--line);
+  --color-warm-titanium: var(--warm-titanium);
+  --color-midnight-slate: var(--midnight-slate);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
+
+html.dark body {
+  background-color: #1E2227 !important;
+  color: #F5F5F3 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.4; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes progress-fill {
+  0% { width: 8%; }
+  80% { width: 100%; }
+  100% { width: 100%; }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+.animate-progress {
+  animation: progress-fill 3.2s ease-out infinite;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
