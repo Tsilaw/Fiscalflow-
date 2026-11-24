@@ -59,7 +59,7 @@ export default function LandingPage() {
       <Navbar onTrackOrderClick={() => setTrackModalOpen(true)} />
 
       {/* ===== HERO / CONVERTER CARD ===== */}
-      <section className="max-w-[1200px] mx-auto px-5 sm:px-8 pt-8 sm:pt-14 pb-16 w-full flex flex-col items-center">
+      <section className="max-w-[1200px] mx-auto px-3 sm:px-6 lg:px-8 pt-4 sm:pt-12 pb-12 sm:pb-16 w-full flex flex-col items-center">
         <FiscalConverterWidget />
       </section>
 
@@ -194,9 +194,9 @@ export default function LandingPage() {
 
       {/* ===== FOOTER ===== */}
       <footer className="mt-auto border-t border-line bg-surface/50 py-8">
-        <div className="max-w-[1200px] mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted text-center sm:text-left">
           <div>FiscalFlow Enterprise © 2026. All rights reserved.</div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             <a href="#how-it-works" className="hover:text-ink transition-colors">How it works</a>
             <a href="#pricing" className="hover:text-ink transition-colors">Pricing</a>
             <a href="#faq" className="hover:text-ink transition-colors">FAQ</a>

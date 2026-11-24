@@ -290,10 +290,10 @@ export default function AdminPage() {
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-surface border border-line w-fit">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 p-1.5 rounded-2xl bg-surface border border-line w-full sm:w-fit">
           <button
             onClick={() => setActiveTab("orders")}
-            className={`h-10 px-5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all ${
+            className={`h-10 px-4 sm:px-5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all ${
               activeTab === "orders"
                 ? "bg-accent text-on-accent shadow-sm"
                 : "text-muted hover:text-ink"
@@ -310,7 +310,7 @@ export default function AdminPage() {
 
           <button
             onClick={() => setActiveTab("settings")}
-            className={`h-10 px-5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all ${
+            className={`h-10 px-4 sm:px-5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all ${
               activeTab === "settings"
                 ? "bg-accent text-on-accent shadow-sm"
                 : "text-muted hover:text-ink"

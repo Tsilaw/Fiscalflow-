@@ -278,9 +278,9 @@ export function FiscalConverterWidget() {
   const currentIndex = getStepIndex(currentStep);
 
   return (
-    <div className="w-full max-w-[840px] mx-auto rounded-3xl bg-surface border border-line p-6 sm:p-10 shadow-xl transition-all">
+    <div className="w-full max-w-[840px] mx-auto rounded-3xl bg-surface border border-line p-4 sm:p-8 md:p-10 shadow-xl transition-all">
       {/* Eyebrow Pill (Dynamically shows configured price) */}
-      <div className="flex justify-center mb-6">
+      <div className="flex justify-center mb-5 sm:mb-6">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/40 text-xs font-semibold">
           <span className="w-2 h-2 rounded-full bg-accent animate-pulse-dot" />
           <span>{unitPrice} {currency} per receipt</span>
@@ -288,17 +288,17 @@ export function FiscalConverterWidget() {
       </div>
 
       {/* Title & Subtitle */}
-      <div className="text-center max-w-2xl mx-auto mb-8">
-        <h1 className="font-heading font-bold text-3xl sm:text-4xl text-ink tracking-tight mb-3">
+      <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
+        <h1 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-ink tracking-tight mb-2 sm:mb-3">
           Turn your monthly receipt export into Excel.
         </h1>
-        <p className="text-muted text-sm sm:text-base leading-relaxed">
+        <p className="text-muted text-xs sm:text-sm md:text-base leading-relaxed px-2">
           Upload the <span className="font-mono text-xs px-1.5 py-0.5 rounded bg-bg border border-line font-medium text-ink">.txt</span> file from your fiscal receipt machine, pay by Telebirr or CBE, and download a clean spreadsheet once we confirm your payment.
         </p>
       </div>
 
       {/* Stepper Navigation */}
-      <div className="grid grid-cols-5 gap-2 sm:gap-3 mb-8">
+      <div className="grid grid-cols-5 gap-1.5 sm:gap-3 mb-6 sm:mb-8">
         {stepsList.map((step, idx) => {
           const isActive = idx === currentIndex;
           const isDone = idx < currentIndex;
@@ -310,20 +310,32 @@ export function FiscalConverterWidget() {
                   setCurrentStep(step.key);
                 }
               }}
-              className={`flex flex-col gap-2 cursor-pointer group text-center ${
+              className={`flex flex-col gap-1.5 sm:gap-2 cursor-pointer group text-center ${
                 !isDone && !isActive ? "opacity-60 pointer-events-none" : ""
               }`}
             >
               <span
-                className={`text-xs sm:text-[13px] font-semibold transition-colors ${
-                  isActive ? "text-ink font-bold" : isDone ? "text-ink" : "text-muted"
+                className={`text-[11px] sm:text-xs md:text-[13px] font-semibold transition-colors truncate ${
+                  isActive ? "text-accent font-bold" : isDone ? "text-ink" : "text-muted"
                 }`}
               >
-                {step.label}
+                {step.key === "review" ? (
+                  <>
+                    <span>Review</span>
+                    <span className="hidden sm:inline"> fee</span>
+                  </>
+                ) : step.key === "proof" ? (
+                  <>
+                    <span className="hidden sm:inline">Send </span>
+                    <span>Proof</span>
+                  </>
+                ) : (
+                  step.label
+                )}
               </span>
               {/* Bottom indicator bar */}
               <div
-                className={`h-1 rounded-full transition-all ${
+                className={`h-1 sm:h-1.5 rounded-full transition-all ${
                   isActive
                     ? "bg-[#10B981]"
                     : isDone
@@ -354,7 +366,7 @@ export function FiscalConverterWidget() {
             }}
             onDragLeave={() => setDragActive(false)}
             onDrop={handleDrop}
-            className={`rounded-2xl border-2 border-dashed p-10 sm:p-14 flex flex-col items-center justify-center text-center transition-all bg-surface-lifted/40 ${
+            className={`rounded-2xl border-2 border-dashed p-6 sm:p-10 md:p-14 flex flex-col items-center justify-center text-center transition-all bg-surface-lifted/40 ${
               dragActive
                 ? "border-accent bg-accent/5 scale-[1.01]"
                 : "border-line hover:border-muted"
@@ -373,23 +385,23 @@ export function FiscalConverterWidget() {
             />
 
             {/* Cloud Icon */}
-            <div className="w-14 h-14 rounded-2xl bg-[#E8F5E9] dark:bg-[#1B3828] text-[#2E7D32] dark:text-[#4ADE80] flex items-center justify-center mb-4 shadow-sm border border-[#C8E6C9] dark:border-[#2E7D32]/30">
-              <UploadCloud className="w-7 h-7" />
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#E8F5E9] dark:bg-[#1B3828] text-[#2E7D32] dark:text-[#4ADE80] flex items-center justify-center mb-3 sm:mb-4 shadow-sm border border-[#C8E6C9] dark:border-[#2E7D32]/30">
+              <UploadCloud className="w-6 h-6 sm:w-7 sm:h-7" />
             </div>
 
-            <h3 className="font-heading font-bold text-lg sm:text-xl text-ink mb-1.5">
+            <h3 className="font-heading font-bold text-base sm:text-lg md:text-xl text-ink mb-1.5">
               {isProcessing ? "Scanning receipt records..." : "Choose your monthly .txt export"}
             </h3>
-            <p className="text-muted text-xs sm:text-sm mb-6">
+            <p className="text-muted text-xs sm:text-sm mb-5 sm:mb-6">
               Fiscal machine export only. Maximum 15 MB.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
               <button
                 type="button"
                 disabled={isProcessing}
                 onClick={() => fileInputRef.current?.click()}
-                className="h-11 px-7 rounded-full bg-[#1E2227] text-white hover:bg-[#111827] dark:bg-[#B5AFA6] dark:text-[#1E2227] dark:hover:bg-white font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-sm transition-all disabled:opacity-50"
+                className="w-full sm:w-auto h-11 px-7 rounded-full bg-[#1E2227] text-white hover:bg-[#111827] dark:bg-[#B5AFA6] dark:text-[#1E2227] dark:hover:bg-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm transition-all disabled:opacity-50"
               >
                 <span>Select .txt file</span>
               </button>
@@ -398,14 +410,14 @@ export function FiscalConverterWidget() {
                 type="button"
                 disabled={isProcessing}
                 onClick={handleSampleData}
-                className="h-11 px-7 rounded-full border border-line bg-surface hover:bg-bg text-ink dark:border-[#B5AFA6]/30 dark:text-[#B5AFA6] dark:hover:text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-sm disabled:opacity-50"
+                className="w-full sm:w-auto h-11 px-7 rounded-full border border-line bg-surface hover:bg-bg text-ink dark:border-[#B5AFA6]/30 dark:text-[#B5AFA6] dark:hover:text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-sm disabled:opacity-50"
               >
                 <span>Try with sample data</span>
               </button>
             </div>
           </div>
 
-          <p className="text-center text-[11px] sm:text-xs text-muted max-w-lg mx-auto pt-2">
+          <p className="text-center text-[11px] sm:text-xs text-muted max-w-lg mx-auto pt-1 sm:pt-2 px-2">
             Only authentic fiscal machine records are counted. Summary records and Z-reports are safely ignored.
           </p>
         </div>
@@ -453,21 +465,23 @@ export function FiscalConverterWidget() {
                 <span className="text-xs font-semibold text-muted block">
                   Scanned Receipts Preview (first {scanData.scan.preview.length} of {scanData.scan.parsedReceipts} receipts):
                 </span>
-                <div className="rounded-xl border border-line bg-bg overflow-hidden text-xs">
-                  <div className="grid grid-cols-4 p-2.5 font-semibold text-muted border-b border-line bg-surface-lifted text-[11px]">
-                    <div>Receipt #</div>
-                    <div>Date & Time</div>
-                    <div>Items</div>
-                    <div className="text-right">Total (ETB)</div>
-                  </div>
-                  {scanData.scan.preview.map((p: any, i: number) => (
-                    <div key={i} className="grid grid-cols-4 p-2.5 border-b border-line last:border-b-0 items-center font-mono text-[11px]">
-                      <div className="font-bold text-ink">#{p.receiptNumber}</div>
-                      <div className="text-muted">{p.date} {p.time}</div>
-                      <div>{p.itemCount} item(s)</div>
-                      <div className="text-right font-bold text-accent">{p.total.toFixed(2)}</div>
+                <div className="rounded-xl border border-line bg-bg overflow-x-auto text-xs shadow-inner">
+                  <div className="min-w-[340px]">
+                    <div className="grid grid-cols-4 p-2.5 font-semibold text-muted border-b border-line bg-surface-lifted text-[11px]">
+                      <div>Receipt #</div>
+                      <div>Date & Time</div>
+                      <div>Items</div>
+                      <div className="text-right">Total (ETB)</div>
                     </div>
-                  ))}
+                    {scanData.scan.preview.map((p: any, i: number) => (
+                      <div key={i} className="grid grid-cols-4 p-2.5 border-b border-line last:border-b-0 items-center font-mono text-[11px]">
+                        <div className="font-bold text-ink truncate">#{p.receiptNumber}</div>
+                        <div className="text-muted truncate">{p.date} {p.time}</div>
+                        <div>{p.itemCount} item(s)</div>
+                        <div className="text-right font-bold text-accent">{p.total.toFixed(2)}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
@@ -481,17 +495,17 @@ export function FiscalConverterWidget() {
             )}
           </div>
 
-          <div className="flex items-center justify-between pt-2">
+          <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-3 pt-2">
             <button
               onClick={() => setCurrentStep("upload")}
-              className="text-xs text-muted hover:text-ink font-semibold underline underline-offset-4"
+              className="w-full sm:w-auto text-center text-xs text-muted hover:text-ink font-semibold py-2 underline underline-offset-4"
             >
               ← Upload a different file
             </button>
 
             <button
               onClick={() => setCurrentStep("pay")}
-              className="h-11 px-6 rounded-xl bg-accent text-on-accent font-semibold text-xs sm:text-sm flex items-center gap-2 hover:opacity-90 shadow transition-all"
+              className="w-full sm:w-auto h-11 px-6 rounded-full bg-accent text-on-accent font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 hover:opacity-90 shadow transition-all"
             >
               <span>Continue to payment</span>
               <ArrowRight className="w-4 h-4" />
@@ -597,17 +611,17 @@ export function FiscalConverterWidget() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-2">
+          <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-3 pt-2">
             <button
               onClick={() => setCurrentStep("review")}
-              className="text-xs text-muted hover:text-ink font-semibold"
+              className="w-full sm:w-auto text-center text-xs text-muted hover:text-ink font-semibold py-2"
             >
               ← Back to fee review
             </button>
 
             <button
               onClick={() => setCurrentStep("proof")}
-              className="h-11 px-6 rounded-xl bg-accent text-on-accent font-semibold text-xs sm:text-sm flex items-center gap-2 hover:opacity-90 shadow transition-all"
+              className="w-full sm:w-auto h-11 px-6 rounded-full bg-accent text-on-accent font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 hover:opacity-90 shadow transition-all"
             >
               <span>I have transferred the fee</span>
               <ArrowRight className="w-4 h-4" />
@@ -698,11 +712,11 @@ export function FiscalConverterWidget() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-2">
+          <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-3 pt-2">
             <button
               type="button"
               onClick={() => setCurrentStep("pay")}
-              className="text-xs text-muted hover:text-ink font-semibold"
+              className="w-full sm:w-auto text-center text-xs text-muted hover:text-ink font-semibold py-2"
             >
               ← Back to account details
             </button>
@@ -710,7 +724,7 @@ export function FiscalConverterWidget() {
             <button
               type="submit"
               disabled={isProcessing}
-              className="h-11 px-6 rounded-xl bg-accent text-on-accent font-semibold text-xs sm:text-sm flex items-center gap-2 hover:opacity-90 shadow transition-all disabled:opacity-50"
+              className="w-full sm:w-auto h-11 px-6 rounded-full bg-accent text-on-accent font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 hover:opacity-90 shadow transition-all disabled:opacity-50"
             >
               {isProcessing ? "Submitting..." : "Send proof for verification"}
             </button>
@@ -753,18 +767,18 @@ export function FiscalConverterWidget() {
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-bg border border-line text-xs font-mono inline-block max-w-sm text-left space-y-1">
-              <div><span className="text-muted">Order ID:</span> <span className="font-semibold text-ink">{scanData.orderId}</span></div>
-              <div><span className="text-muted">File:</span> <span className="font-semibold text-ink">{selectedFileName}</span></div>
+            <div className="p-4 rounded-xl bg-bg border border-line text-xs font-mono w-full max-w-sm mx-auto text-left space-y-1 overflow-hidden">
+              <div className="truncate"><span className="text-muted">Order ID:</span> <span className="font-semibold text-ink">{scanData.orderId}</span></div>
+              <div className="truncate"><span className="text-muted">File:</span> <span className="font-semibold text-ink">{selectedFileName}</span></div>
               <div><span className="text-muted">Receipts:</span> <span className="font-semibold text-ink">{scanData.scan.parsedReceipts}</span></div>
               <div><span className="text-muted">Amount:</span> <span className="font-semibold text-accent font-bold">{scanData.pricing.totalAmount} ETB</span></div>
             </div>
 
-            <div className="pt-2 flex flex-wrap justify-center gap-3">
+            <div className="pt-2 flex flex-col sm:flex-row justify-center gap-3 w-full">
               {orderStatus === "completed" ? (
                 <a
                   href={`/api/download/${scanData.orderId}`}
-                  className="h-12 px-8 rounded-xl bg-accent text-on-accent font-semibold text-sm flex items-center gap-2 hover:opacity-95 shadow-lg transition-all"
+                  className="w-full sm:w-auto h-12 px-8 rounded-full bg-accent text-on-accent font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-95 shadow-lg transition-all"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download Clean Excel (.xlsx)</span>
@@ -772,7 +786,7 @@ export function FiscalConverterWidget() {
               ) : orderStatus === "rejected" ? (
                 <button
                   onClick={() => setCurrentStep("proof")}
-                  className="h-11 px-6 rounded-xl bg-accent text-on-accent font-semibold text-xs sm:text-sm hover:opacity-90 shadow"
+                  className="w-full sm:w-auto h-11 px-6 rounded-full bg-accent text-on-accent font-semibold text-xs sm:text-sm hover:opacity-90 shadow"
                 >
                   Resubmit Corrected Proof
                 </button>
