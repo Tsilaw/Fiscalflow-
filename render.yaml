@@ -11,7 +11,11 @@ services:
       - key: NODE_VERSION
         value: 20.18.0
       - key: NODE_OPTIONS
-        value: "--max-old-space-size=1024"
+        value: "--max-old-space-size=450"
+      - key: NEXT_CPU_COUNT
+        value: "1"
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
       - key: HOSTNAME
         value: "0.0.0.0"
       - key: JWT_SECRET
