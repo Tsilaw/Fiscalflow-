@@ -36,7 +36,26 @@ export default function LoginPage() {
         body: JSON.stringify({ email: email.trim(), password }),
       });
 
-      const data = await res.json();
+      let data: any = {};
+      const contentType = res.headers.get("content-type") || "";
+
+      if (contentType.includes("application/json")) {
+        try {
+          data = await res.json();
+        } catch {
+          data = {};
+        }
+      } else {
+        const text = await res.text().catch(() => "");
+        if (res.status === 502) {
+          data = { error: "Service is temporarily spinning up (502 Bad Gateway). Please wait 15 seconds and try again." };
+        } else if (res.status === 503) {
+          data = { error: "Service is temporarily unavailable. Please retry in a few moments." };
+        } else {
+          data = { error: text.slice(0, 150) || `Server error (${res.status} ${res.statusText})` };
+        }
+      }
+
       if (!res.ok) {
         setError(data.error || "Invalid email or password");
       } else {
@@ -46,8 +65,9 @@ export default function LoginPage() {
           window.location.href = "/dashboard";
         }
       }
-    } catch {
-      setError("Network error. Please try again.");
+    } catch (err: any) {
+      console.error("[LOGIN_CLIENT_ERROR]", err);
+      setError(err?.message || "Unable to reach server. Please check your connection or wait a few seconds if service is spinning up.");
     } finally {
       setLoading(false);
     }

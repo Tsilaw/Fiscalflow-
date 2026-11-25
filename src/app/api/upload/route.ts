@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getUserFromRequest } from '@/lib/auth';
 import { parsePOSJournal } from '@/lib/parser';
-import db from '@/lib/db';
+import db, { getWritableDataDir } from '@/lib/db';
 import { v4 as uuidv4 } from 'uuid';
 import fs from 'fs';
 import path from 'path';
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'File is empty' }, { status: 400 });
     }
 
-    const uploadsDir = path.join(process.cwd(), 'data', 'uploads');
+    const uploadsDir = path.join(getWritableDataDir(), 'uploads');
     if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
 
     const fileId = uuidv4();

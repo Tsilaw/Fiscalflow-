@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -H 0.0.0.0 -p ${PORT:-10000}",
+    "postinstall": "npm rebuild better-sqlite3",
     "lint": "eslint"
   },
   "dependencies": {

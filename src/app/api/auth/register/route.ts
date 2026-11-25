@@ -6,15 +6,30 @@ import { createToken } from '@/lib/auth';
 
 export async function POST(req: NextRequest) {
   try {
-    const { fullName, email, phone, password } = await req.json();
+    let body: any = {};
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json({ error: 'Invalid JSON request body' }, { status: 400 });
+    }
+
+    const { fullName, email, phone, password } = body;
 
     if (!fullName || !email || !password) {
       return NextResponse.json({ error: 'Full name, email, and password are required' }, { status: 400 });
     }
 
-    const existing = db.prepare('SELECT id FROM users WHERE email = ?').get(email);
+    const cleanEmail = String(email).trim().toLowerCase();
+    const cleanName = String(fullName).trim();
+    const cleanPhone = phone ? String(phone).trim() : null;
+
+    if (password.length < 6) {
+      return NextResponse.json({ error: 'Password must be at least 6 characters long' }, { status: 400 });
+    }
+
+    const existing = db.prepare('SELECT id FROM users WHERE LOWER(email) = ?').get(cleanEmail);
     if (existing) {
-      return NextResponse.json({ error: 'Email already registered' }, { status: 409 });
+      return NextResponse.json({ error: 'Email already registered. Please sign in instead.' }, { status: 409 });
     }
 
     const id = uuidv4();
@@ -22,11 +37,15 @@ export async function POST(req: NextRequest) {
 
     db.prepare(
       'INSERT INTO users (id, full_name, email, phone, password_hash, role) VALUES (?, ?, ?, ?, ?, ?)'
-    ).run(id, fullName, email, phone || null, passwordHash, 'customer');
+    ).run(id, cleanName, cleanEmail, cleanPhone, passwordHash, 'customer');
 
     const token = createToken(id, 'customer');
 
-    const response = NextResponse.json({ success: true, user: { id, fullName, email, role: 'customer' } });
+    const response = NextResponse.json({
+      success: true,
+      user: { id, fullName: cleanName, email: cleanEmail, role: 'customer' },
+    });
+
     response.cookies.set('token', token, {
       httpOnly: true,
       secure: false,
@@ -37,6 +56,10 @@ export async function POST(req: NextRequest) {
 
     return response;
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error('[AUTH_REGISTER_ERROR]', error);
+    return NextResponse.json(
+      { error: error?.message || 'Registration service unavailable. Please try again.' },
+      { status: 500 }
+    );
   }
 }

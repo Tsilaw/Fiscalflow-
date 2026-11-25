@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getUserFromRequest } from '@/lib/auth';
-import db from '@/lib/db';
+import db, { getWritableDataDir } from '@/lib/db';
 import { v4 as uuidv4 } from 'uuid';
 import fs from 'fs';
 import path from 'path';
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ ord
 
     let evidencePath = null;
     if (evidence && evidence.size > 0) {
-      const evidenceDir = path.join(process.cwd(), 'data', 'evidence');
+      const evidenceDir = path.join(getWritableDataDir(), 'evidence');
       if (!fs.existsSync(evidenceDir)) fs.mkdirSync(evidenceDir, { recursive: true });
       evidencePath = path.join(evidenceDir, `${uuidv4()}_${evidence.name}`);
       const buffer = Buffer.from(await evidence.arrayBuffer());

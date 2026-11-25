@@ -160,7 +160,15 @@ export function FiscalConverterWidget() {
         body: formData,
       });
 
-      const data = await res.json();
+      let data: any = {};
+      const ct = res.headers.get("content-type") || "";
+      if (ct.includes("application/json")) {
+        data = await res.json().catch(() => ({}));
+      } else {
+        const text = await res.text().catch(() => "");
+        data = { error: text.slice(0, 150) || `Server error (${res.status})` };
+      }
+
       if (!res.ok) {
         setErrorMsg(data.error || "File scan failed.");
       } else {
@@ -169,7 +177,8 @@ export function FiscalConverterWidget() {
         setCurrentStep("review");
       }
     } catch (err: any) {
-      setErrorMsg("Failed to upload file. Please try again.");
+      console.error("[UPLOAD_CLIENT_ERROR]", err);
+      setErrorMsg(err?.message || "Failed to upload file. Please try again.");
     } finally {
       setIsProcessing(false);
     }
@@ -237,15 +246,24 @@ export function FiscalConverterWidget() {
         body: formData,
       });
 
-      const data = await res.json();
+      let data: any = {};
+      const ct = res.headers.get("content-type") || "";
+      if (ct.includes("application/json")) {
+        data = await res.json().catch(() => ({}));
+      } else {
+        const text = await res.text().catch(() => "");
+        data = { error: text.slice(0, 150) || `Server error (${res.status})` };
+      }
+
       if (!res.ok) {
         setErrorMsg(data.error || "Payment submission failed.");
       } else {
         setOrderStatus("pending_verification");
         setCurrentStep("track");
       }
-    } catch {
-      setErrorMsg("Network error submitting proof.");
+    } catch (err: any) {
+      console.error("[PAY_CLIENT_ERROR]", err);
+      setErrorMsg(err?.message || "Failed to submit payment proof. Please try again.");
     } finally {
       setIsProcessing(false);
     }
