@@ -134,7 +134,11 @@ function getDatabase(): Database.Database {
       fs.mkdirSync(DB_DIR, { recursive: true });
     }
     const instance = new Database(DB_PATH);
-    instance.pragma("journal_mode = WAL");
+    try {
+      instance.pragma("journal_mode = WAL");
+    } catch {
+      instance.pragma("journal_mode = DELETE");
+    }
     instance.pragma("foreign_keys = ON");
     initSchema(instance);
     globalThis._posDbInstance = instance;
